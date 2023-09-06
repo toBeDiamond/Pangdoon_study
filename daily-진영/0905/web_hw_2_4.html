@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    div p {
+      color: blue;
+      margin-left: 50px;
+    }
+    div > p {
+      color: crimson;
+      margin-left: 0;
+    }
+
+  </style>
+</head>
+<body>
+  <div>
+    <p>자식</p>
+    <span>
+      <P>자손</P>
+    </span>
+    <p>자식</p>
+    
+  </div>
+  
+</body>
+</html>
+
+ <!-- div p 일 경우에는 div 아래에 있는 모든 p 들에게 영향을 줍니다.
+ div > p 일 경우에는 바로 아래에 있는 p 에게만 영향을 줍니다.
+그래서 자손이 crimson 색깔로 영향을 받지 않기 위해서 div가 아닌 span으로 만들어 주었습니다.
+그렇게 자손은 div 바로 밑에 있는 것이 아니게 되어서 crimson; 색깔에 영향을 받지 않게 되며 blue 색깔을 얻을 수 있습니다.
+또한 차례대로 내려오면서 실행되는 코드이기때문에 모두 50px 정도씩 왼쪽에 공백을 주게되고
+div > p를 바탕으로 다시 자식은 왼쪽으로 붙게 됩니다. -->
