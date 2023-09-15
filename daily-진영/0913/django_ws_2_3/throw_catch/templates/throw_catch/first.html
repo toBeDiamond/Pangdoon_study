@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+    {% if message == None %}
+    catch : 아무것도 받지 못함
+    {% else %}
+    catch : {{message}} 을/를 받음!
+    {% endif %}
+  <form action="/throw_catch/second/" method = "GET">
+    <label for="a">throw : </label>
+    <input type="text" id="a" name='message'>
+    <input type="submit">
+  </form>
+</body>
+</html>
