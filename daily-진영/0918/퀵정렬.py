@@ -1,7 +1,3 @@
-'''
-9
-3 2 4 6 9 1 8 7 5
-'''
 def lomuto_partition(arr, left, right):
     # 맨 오른쪽 요소를 pivot 으로 설정하고
     # i = left -1
@@ -34,6 +30,7 @@ def hoare_partition(a, l, r):
 
 
 def quick_sort(a, l, r):
+    print(arr)
     if l < r:
         # pivot = hoare_partition(a, l, r)
         pivot = lomuto_partition(a, l, r)
