@@ -29,16 +29,15 @@ def merge_sort(a):
         return a
     # 유도파트
     # 문제를 절반으로 나누어서 각각을 정렬
-    else:
+    else:  #[4 1 2]
         mid = len(a) // 2
-        left = a[:mid]
-        right = a[mid:]
+        left = a[:mid] #
+        right = a[mid:] #
 
-        left = merge_sort(left)
-        right = merge_sort(right)
+        left = merge_sort(left) #
+        right = merge_sort(right) #
 
         return merge(left, right)
-
 
 N = int(input())
 A = list(map(int, input().split()))
