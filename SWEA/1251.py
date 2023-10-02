@@ -13,7 +13,7 @@ def prim(start):  # prim 함수를 쓴다 (시작점 넣기)
             if visited[w] == 0:     # 방문하지 않은 곳이라면 더 작은 값으로 업데이트
                 Earth[w] = min(Earth[w], island[v][w])
 
-
+    
 T = int(input())  # 테스트 케이스 수
 for test_case in range(1, T + 1):  # 개수 만큼 돌려주기
     N = int(input())  # 섬의 개수
