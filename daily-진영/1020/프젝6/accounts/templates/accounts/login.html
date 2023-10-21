@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>로그인</h1>
+<form action="" method="POST">
+  {% csrf_token %}
+  {# action=""의 의미 : 주소창에 적힌 주소 그대로 재요청하라는 뜻 #}
+  {# login_required 데코레이션이 제대로 동작하기 위해서는 반드시 action을 비워둬야함 #}
+  {# form버튼을 실행해도 아무데도 안 가고 싶으면, action="#" #}
+  {{form.as_p}}
+  <button class="btn btn-light">Login</button>
+</form>
+{% endblock content %}

@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>상세 페이지</h1>
+<div>글번호 : {{board.pk}}</div>
+<div>작성자 : {{board.author.username}}</div>
+<div>글제목 : {{board.title}}</div>
+<div>글내용 : {{board.content}}</div>
+<div>작성날짜 : {{board.created_at}}</div>
+<div>수정날짜 : {{board.updated_at}}</div>
+<hr>
+<a class="btn btn-light" href="{% url "boards:index" %}">메인 페이지로</a>
+<div>
+  {% if request.user.is_authenticated %}
+    <form class="d-flex justify-content-between" action="{% url "boards:comment" board.pk %}" method="POST">
+      {% csrf_token %}
+      {{form}}
+      <button class="btn btn-secondary">작성하기</button>
+    </form>
+  {% else %}
+    <p>댓글을 작성하시려면 로그인을 해주세요.</p>
+  {% endif %}
+</div>
+<hr>
+<h3>댓글 목록</h3>
+{% for comment in comments %}
+  <div class="d-flex justify-content-between">
+    <p>{{comment.author.username}} - {{comment.content}} ({{comment.created_at}})</p>
+    <form action="{% url "boards:comment_detail" board.pk comment.pk%}" method="POST">
+      {% csrf_token %}
+      <button class="btn btn-light">삭제하기</button>
+    </form>
+  </div>
+  <hr>
+{%empty%}
+  <p>댓글이 없습니다.</p>
+{% endfor %}
+
+{% endblock content %}

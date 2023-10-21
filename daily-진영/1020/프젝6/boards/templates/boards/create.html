@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>생성 페이지</h1>
+<form action="{% url "boards:create" %}" method="POST">
+  {% csrf_token %}
+  {{form.as_p}}
+  {# form 변수로 전달받은 BoardFoam을 p태그로 묶어줌 #}
+  <button class='btn btn-light'>생성하기</button>
+</form>
+
+{% endblock content %}

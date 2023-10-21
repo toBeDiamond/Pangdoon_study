@@ -1,0 +1,64 @@
+{% load bootstrap5 %}
+{# bootstrap5을 가져온다 #}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    a {
+      text-decoration: none;
+    }
+    {% block style %}
+    {% endblock style %}
+  </style>
+  {% bootstrap_css %}
+</head>
+<body>
+  <div class="container">
+  {# 로그인 상태 표시 바 #}
+    <div class="d-flex justify-content-between">
+      {% if request.user.is_authenticated %}
+      {# 상태표시창 #}
+        <h1>Hello, {{request.user.username}}</h1>
+      {# 버튼들 : logout #}
+        <div>
+          <form action="{% url "accounts:logout" %}" method="POST">
+            {% csrf_token %}
+            <button class="btn btn-light m-2">logout</button>
+          </form>
+        </div>
+      {% else %}
+        <h1>로그인을 해주세요</h1>
+      {# 버튼들 : login, signup #}
+        <div>
+          <a class="btn btn-light" href="{% url "accounts:login" %}">login</a>
+          <a class="btn btn-light" href="{% url "accounts:signup" %}">signup</a>
+        </div>
+      {% endif %}
+    </div>
+    {# 네비게이션 바 #}
+    <nav class="navbar navbar-expand bg-light">
+      <div class="container-fluid">
+        <ul class="navbar-nav me-auto mb-2">
+          <li class="nav-item mx-3">
+            <a href="{% url "boards:index" %}">메인 페이지</a>
+          </li>
+          {% if request.user.is_authenticated %}
+            <li class="nav-item mx-3">
+              <a href="{% url "accounts:profile" request.user.pk %}">프로필 페이지</a>
+            </li>
+          {% endif %}
+        </ul>
+      </div>
+    </nav>
+
+    {% block content %}
+      {# 이 안쪽은 상속받은 페이지가 채워줄 것 #}
+    {% endblock content %}
+  </div>
+  {% bootstrap_javascript %}
+</body>
+</html>
