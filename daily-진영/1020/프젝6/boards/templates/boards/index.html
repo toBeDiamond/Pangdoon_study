@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block content %}
+<header class='d-flex justify-content-between'>
+<h1>메인 페이지</h1>
+{% if request.user.is_authenticated %}
+<a class="btn btn-primary" href="{% url "boards:create" %}">생성하기</a>
+{% endif %}
+</header>
+{% for board in boards %}
+<div>글번호 : {{board.pk}}</div>
+<div>작성자 : 
+  <a href="{% url "accounts:profile" board.author.pk %}">{{board.author.username}}</a>
+</div>
+<div>글제목 : 
+  <a href="{% url "boards:detail" board.pk %}">{{board.title}}</a>
+</div>
+<hr>
+{% endfor %}
+{% endblock content %}

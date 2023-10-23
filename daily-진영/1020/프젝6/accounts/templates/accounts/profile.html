@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>{{owner.username}}님의 프로필 페이지</h1>
+<p>팔로워: {{followers|length}}/ 팔로잉: {{followings|length}}</p>
+{% if request.user != owner %}
+{# 현재 로그인하고 있는 사용자와 프로필페이지의 소유자가 같지 않을때만 follow버튼을 보여준다! #}
+<form action="{% url "accounts:follow" owner.pk %}" method="POST">
+  {% csrf_token %}
+  {% if request.user in followers %}
+  <button>Unfollow</button>
+  {% else %}
+  <button>Follow</button>
+  {% endif %}
+</form>
+{% endif %}
+{% endblock content %}
