@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+  <title>Document</title>
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <ul class="switcher">
+    <li id="grayButton"></li>
+    <li id="whiteButton"></li>
+    <li id="navyButton"></li>
+  </ul>
+  
+  <h1>Theme Switcher</h1>
+  
+  <p>테마를 바꿔봅시다.</p>
+
+  <script>
+    /* 
+      아래 이미지를 참조하여 li를 클릭하면, 아래와 같이 컬러 테마를 바꾸는 기능을 구현하시오.
+      body의 background color 와 color 를 직접 조작하여 테마를 바꾸도록 코드를 작성하시오.
+      (CSS는 변경할 필요 없음)
+      1. li#grayButton 클릭시 background-color는 gray, color는 white로 변경
+      2. li#whiteButton 클릭시 background-color는 white, color는 black으로 변경
+      3. li#navyButton 클릭시 background-color는 navy, color는 white로 변경
+    */
+
+    const bodyTag = document.querySelector('body')
+    const h1Tag = document.querySelector('h1')
+    const pTag = document.querySelector('p')
+
+    // li를 클릭하면 -> 컬러 테마 바꾸기
+    // 1. li Tag 선택
+     const grayTag = document.querySelector('#grayButton')
+     const whiteTag = document.querySelector('#whiteButton')
+     const navyTag = document.querySelector('#navyButton')
+
+    // 2. 콜백함수 작성
+
+    // const clickHandler = function (event) {
+    //   console.log(event.target.getAttribute('id'))
+    // }
+    const clickHandler = function (event) {
+      console.log(event)
+      const susie = event.target.getAttribute('id')
+      let backColor = 'navy' 
+      let textColor = 'white'
+      if (susie === 'grayButton'){
+        backColor = 'gray'
+      }
+      else if (susie === 'whiteButton'){
+        backColor = 'white'
+        textColor = 'black'
+      }
+      bodyTag.style.backgroundColor = backColor
+      h1Tag.style.color = textColor
+      pTag.style.color = textColor
+
+    }
+
+    // 3. 버튼에 이벤트 핸들러 붙여주기 
+
+    // grayTag.addEventListener('click', function () {clickHandler('gray', 'white')})
+    grayTag.addEventListener('click', clickHandler)
+    whiteTag.addEventListener('click', clickHandler)
+    navyTag.addEventListener('click', clickHandler)
+
+  </script>
+</body>
+</html>
