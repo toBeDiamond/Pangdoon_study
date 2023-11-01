@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <!-- Vue 3 CDN을 포함합니다 -->
+  <script src="https://cdn.jsdelivr.net/npm/vue@3.2.20/dist/vue.global.prod.js"></script>
+</head>
+<body>
+  <div id="app">
+    <h1 id="name">{{ name }}</h1>
+    <p>저는 {{ age }} 살 입니다.</p>
+    <p>연락처 : {{ phone }}</p>
+  </div>
+  <script>
+    // Vue 3 앱 인스턴스 생성
+    const app = Vue.createApp({
+      data() {
+        return {
+          name: Vue.ref("홍길동"), // 이름 데이터 변수
+          age: Vue.ref("30"),   // 나이 데이터 변수
+          phone: Vue.ref("010-1234-1234") // 연락처 데이터 변수
+        };
+      }
+    });
+
+    // 앱 인스턴스를 app 요소에 마운트
+    app.mount('#app');
+  </script>
+</body>
+</html>
+
+
+
+
+
+
