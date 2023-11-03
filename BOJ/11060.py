@@ -11,7 +11,7 @@ queue = deque()
 queue.append((curr_idx, jump))
 visited = []
 
-while queue:g
+while queue:
     curr_idx, jump = queue.popleft()
     if curr_idx == len(board) - 1:
         print(jump)
