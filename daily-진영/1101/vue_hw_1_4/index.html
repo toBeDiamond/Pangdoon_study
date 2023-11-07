@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <!-- Vue 3 CDN을 포함합니다 -->
+  <script src="https://cdn.jsdelivr.net/npm/vue@3.2.20/dist/vue.global.prod.js"></script>
+</head>
+<body>
+  <div id="app">
+    <h1>{{ title }}</h1>
+    <p>평균 점수 : {{ avgScore }}</p>
+    <button @click="cal_average">평균 점수 계산</button>
+    <hr>
+    <p>전체 점수 목록 : {{ scores.join(', ') }}</p>
+    <p>방학 여부 : {{ is_vacation.status ? '방학 중' : '방학이 아님' }}</p>
+  </div>
+  <script>
+    const app = Vue.createApp({
+      data() {
+        return {
+          title: Vue.ref('점수표'),
+          avgScore: Vue.ref(null),
+          scores: Vue.ref([80, 90, 75, 95, 88]), // 예시 점수 배열
+          is_vacation: Vue.ref({ status: true }) // 방학 여부를 나타내는 객체
+        };
+      },
+      methods: {
+        cal_average() {
+          const sum = this.scores.reduce((total, score) => total + score, 0);
+          this.avgScore = sum / this.scores.length;
+        }
+      }
+    });
+
+    app.mount('#app');
+  </script>
+</body>
+</html>
